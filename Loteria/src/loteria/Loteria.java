@@ -38,7 +38,17 @@ public class Loteria {
         Random r = new Random();
         int[] bolas = new int[]{0, 0, 0, 0, 0, 0};
         for (int i = 0; i < 6; i++) {
-            int bola = (r.nextInt(60)+1);
+            int bola = -1;
+            do {
+                bola = (r.nextInt(60)+1);
+                for (int j = 0; j < i; j++) {
+                    if(bolas[j] == bola){
+                        bola = -1;
+                        break;
+                    }
+                }
+            
+            }while(bola == -1);
             bolas [i] = bola;
             imprimeVetor(bolas);
         }
