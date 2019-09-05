@@ -1,7 +1,7 @@
 package loteria;
 
 import java.util.Scanner;
-
+//Aqui é o Gabriel
 public class Loteria {
 
     public static void main(String[] args) {
