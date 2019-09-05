@@ -3,9 +3,10 @@ package loteria;
 import java.util.Scanner;
 import java.util.Random;
 //Aqui é o Gabriel
+
 public class Loteria {
 
-    public static void main(String[] args) {      
+    public static void main(String[] args) {
         int[] valores = new int[]{0, 0, 0, 0, 0, 0};
         imprimeVetor(valores);
 //       int[] valores2;
@@ -17,16 +18,16 @@ public class Loteria {
 //       valores2[4] = 0;
 //       valores2[5] = 0;
 //       
-
+//Pedir os numeros para o usuario
         Scanner in = new Scanner(System.in);
         System.out.println("Digite 6 Números");
         for (int i = 0; i < 6; i++) {
             int num = -1;
             while (num == -1) {
                 num = capNum(in, i);
-                for (int j = 0; j < i ; j++) {
+                for (int j = 0; j < i; j++) {
                     if (valores[j] == num) {
-                       num = -1;
+                        num = -1;
 //                        break;
                     }
 
@@ -35,23 +36,37 @@ public class Loteria {
             valores[i] = num;
             imprimeVetor(valores);
         }
+//Sortear os numeros aleatoriamente        
         Random r = new Random();
         int[] bolas = new int[]{0, 0, 0, 0, 0, 0};
         for (int i = 0; i < 6; i++) {
             int bola = -1;
             do {
-                bola = (r.nextInt(60)+1);
+                bola = (r.nextInt(60) + 1);
                 for (int j = 0; j < i; j++) {
-                    if(bolas[j] == bola){
+                    if (bolas[j] == bola) {
                         bola = -1;
                         break;
                     }
                 }
-            
-            }while(bola == -1);
-            bolas [i] = bola;
+
+            } while (bola == -1);
+            bolas[i] = bola;
             imprimeVetor(bolas);
         }
+        //Comparar os resultados
+        int acertos = 0;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (valores[i] == bolas[j])
+                {
+                    acertos++;
+                }
+            }
+
+        }
+        System.out.println(acertos);
+
     }
 
     public static int capNum(Scanner in, int i) {
