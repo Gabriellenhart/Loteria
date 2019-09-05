@@ -1,10 +1,11 @@
 package loteria;
 
 import java.util.Scanner;
+import java.util.Random;
 //Aqui é o Gabriel
 public class Loteria {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {      
         int[] valores = new int[]{0, 0, 0, 0, 0, 0};
         imprimeVetor(valores);
 //       int[] valores2;
@@ -33,6 +34,13 @@ public class Loteria {
             }
             valores[i] = num;
             imprimeVetor(valores);
+        }
+        Random r = new Random();
+        int[] bolas = new int[]{0, 0, 0, 0, 0, 0};
+        for (int i = 0; i < 6; i++) {
+            int bola = (r.nextInt(60)+1);
+            bolas [i] = bola;
+            imprimeVetor(bolas);
         }
     }
 
